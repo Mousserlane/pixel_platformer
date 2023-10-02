@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb0q4jfba5h84"]
+
+[ext_resource type="Texture2D" uid="uid://b8t2aldwoqsho" path="res://characters_packed.png" id="1_qp7ok"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6scni"]
+atlas = ExtResource("1_qp7ok")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7pvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6scni")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1awa"]
+size = Vector2(14, 18)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b7pvl")
+animation = &"idle"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_u1awa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
